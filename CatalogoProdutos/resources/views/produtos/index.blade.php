@@ -37,5 +37,5 @@
 			</div>
 		@endforeach
 	</div>
-	{{$produtos->links()}}
+	{{$produtos->appends(['busca' => $busca])->links()}}
 @endsection
