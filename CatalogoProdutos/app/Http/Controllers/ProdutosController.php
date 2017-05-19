@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Produto;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class ProdutosController extends Controller
 {
@@ -20,7 +21,11 @@ class ProdutosController extends Controller
     }
 
     public function create(){
-    	return view('produtos.create');
+        if(Auth::check()){
+    	    return view('produtos.create');            
+        }else{
+            return redirect ('login');
+        }
     }
 
 

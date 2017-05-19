@@ -29,11 +29,13 @@
 					<a href="{{ url('produtos/' . $produto->id) }}" class="thumbnail">
 						{{$produto->titulo}}
 					</a>
-				@endif			
-			{{Form::open(['route'=>['produtos.destroy', $produto->id], 'method' => 'DELETE'])}}
-			<a href="{{url('produtos/'. $produto->id.'/edit')}}" class="btn btn-default">Editar</a>
-			{{ Form::submit('Excluir', ['class' => 'btn btn-default']) }}
-			{{Form::close()}}
+				@endif	
+				@if(Auth::check())		
+					{{Form::open(['route'=>['produtos.destroy', $produto->id], 'method' => 'DELETE'])}}
+					<a href="{{url('produtos/'. $produto->id.'/edit')}}" class="btn btn-default">Editar</a>
+					{{ Form::submit('Excluir', ['class' => 'btn btn-default']) }}
+					{{Form::close()}}
+				@endif
 			</div>
 		@endforeach
 	</div>

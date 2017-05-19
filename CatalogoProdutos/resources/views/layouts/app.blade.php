@@ -28,19 +28,27 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/produtos/') }}">
+                        Garrafas online
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{ url('/produtos/') }}">Produtos</a></li>
+                        <li><a href="{{ url('/contato/') }}">Contato</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::check())
+                        <li>
+                            <a href="{{ url('/adicionar-produto/') }}">
+                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Novo Produto
+                            </a>
+                        </li>
+                    @endif
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
