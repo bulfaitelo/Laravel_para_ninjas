@@ -17,7 +17,7 @@
         <tr ng-repeat="tarefa in dadostarefas" >
             <td>@{{tarefa.texto}}</td>
             <td>@{{tarefa.autor}}</td>
-            <td>@{{tarefa.status}}</td>
+            <td>@{{tarefa.status}}</td>       
         </tr>
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js" ></script>

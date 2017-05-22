@@ -13,7 +13,7 @@ class CriarTabelalistaDeTarefas extends Migration
      */
     public function up()
     {
-        Schema::create('listaDeTarefas', function (Blueprint $table) {
+        Schema::create('listadetarefas', function (Blueprint $table) {
             $table->engine = 'MyISAM';
             $table->increments('id');
             $table->string('texto');
@@ -30,6 +30,6 @@ class CriarTabelalistaDeTarefas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listaDeTarefas');
+        Schema::dropIfExists('listadetarefas');
     }
 }
