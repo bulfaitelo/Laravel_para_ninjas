@@ -21,7 +21,7 @@
 				'autor': $scope.autor,
 				'status': $scope.status
 			}
-			var requisicao = $http({metohd:"post", url:"api/tarefas", data:dadosPost}).success( function (data, status){
+			var requisicao = $http({method:"post", url:"api/tarefas", data:dadosPost}).success( function (data, status){
 					if(data && status == 201){
 						$scope.loadData(function (){ $scope.texto = ''; $scope.autor = '';$scope.status = '';
 						});

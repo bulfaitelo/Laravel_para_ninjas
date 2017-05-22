@@ -9,6 +9,7 @@
 <body class="container" ng-controller="TarefasController as tarefas">
     <div class="page-header"><h2>Minha lista de tarefas</h2></div>
     <form ng-submit="adicionarTarefa()">
+        <input type="hidden" name="token" value="{{ csrf_token() }}">
         <label for="texto">Tarefa</label>
         <input type="text" id="texto" ng-model="texto" required placeholder="Texto" class="form-control">
         <label for="autor">Autor</label>
