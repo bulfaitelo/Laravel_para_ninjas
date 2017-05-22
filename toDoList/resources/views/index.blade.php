@@ -8,6 +8,18 @@
 </head>
 <body class="container" ng-controller="TarefasController as tarefas">
     <div class="page-header"><h2>Minha lista de tarefas</h2></div>
+    <form ng-submit="adicionarTarefa()">
+        <label for="texto">Tarefa</label>
+        <input type="text" id="texto" ng-model="texto" required placeholder="Texto" class="form-control">
+        <label for="autor">Autor</label>
+        <input type="text" id="autor" ng-model="autor" required placeholder="Autor" class="form-control">
+        <label for="status">Status</label>
+        <select id="status" ng-model="status" required="" class="form-control">
+            <option value="Concluido">Concluido</option>
+            <option value="Pendente">Pendente</option>
+        </select>
+        <input type="submit" value="Cadastrar" class="btn btn-default">
+    </form>
     <table class="table table-striped">
         <thead>
             <tr>

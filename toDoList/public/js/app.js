@@ -15,5 +15,21 @@
 			});
 		}
 		$scope.loadData();
+		$scope.adicionarTarefa = function(){
+			dadosPost = {
+				'texto': $scope.texto,
+				'autor': $scope.autor,
+				'status': $scope.status
+			}
+			var requisicao = $http({metohd:"post", url:"api/tarefas", data:dadosPost}).success( function (data, status){
+					if(data && status == 201){
+						$scope.loadData(function (){ $scope.texto = ''; $scope.autor = '';$scope.status = '';
+						});
+					}
+					else{
+						window.alert("Não foi possovel adicionar tarefa");
+					}
+				});
+		}
 	});
 })();
