@@ -35,4 +35,13 @@ class TarefasController extends Controller
     		return Response("0", 304);
     	}
     }
+
+    public function destroy($id){
+    	$tarefa = ListaDeTarefas::find($id);
+    	if ($tarefa->delete()) {
+    		return Response("1", 200);
+    	}else{
+    		return Response("0", 304);
+    	}
+    }
 }

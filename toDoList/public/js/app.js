@@ -41,5 +41,16 @@
 				}
 			})
 		}
+		$scope.excluirTarefa = function(id){
+			if(confirm("Confirma Exclusão da tarefa?")){
+				var requisicao = $http({method:"delete", url:"api/tarefas/"+id}).success(function (data, status) {
+					if (data == 1 && status == 200) {
+						$scope.loadData();
+					}else {
+						window.alert("Nao foi possivel excluirtarefa");
+					}
+				})
+			}
+		}
 	});
 })();
