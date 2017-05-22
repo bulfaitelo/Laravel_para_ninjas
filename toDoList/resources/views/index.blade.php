@@ -8,6 +8,8 @@
 </head>
 <body class="container" ng-controller="TarefasController as tarefas">
     <div class="page-header"><h2>Minha lista de tarefas</h2></div>
+   
+    <!--  -->
     <form ng-submit="adicionarTarefa()">
         <input type="hidden" name="token" value="{{ csrf_token() }}">
         <label for="texto">Tarefa</label>
@@ -21,16 +23,26 @@
         </select>
         <input type="submit" value="Cadastrar" class="btn btn-default">
     </form>
+    <!--  -->
+
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Tarefa</th><th>Autor</th><th>Status</th>
+                <th>Tarefa</th><th>Autor</th><th>Status</th><th>Alterar</th>
             </tr>
         </thead>
         <tr ng-repeat="tarefa in dadostarefas" >
             <td>@{{tarefa.texto}}</td>
             <td>@{{tarefa.autor}}</td>
-            <td>@{{tarefa.status}}</td>       
+            <td>@{{tarefa.status}}</td>
+            <td width="10%">
+                <span ng-if="tarefa.status =='Concluido'">
+                    <input type="button" value="Marcar Como Pendente" class="btn btn-success" ng-click="mudarStatus(tarefa.id, 'Pendente')">
+                </span>
+                <span ng-if="tarefa.status !='Concluido'">
+                    <input type="button" value="Marcar Como Concluido" class="btn btn-warning" ng-click="mudarStatus(tarefa.id, 'Concluido')">
+                </span>
+            </td>
         </tr>
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js" ></script>

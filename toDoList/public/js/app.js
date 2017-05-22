@@ -31,5 +31,15 @@
 					}
 				});
 		}
+		$scope.mudarStatus = function(id, status) {
+			dadosPost = {'status': status};
+			var requisicao = $http({method:"put", url:"api/tarefas/"+id, data:dadosPost}).success(function (data, status) {
+				if(data.id == id && status == 201){
+					$scope.loadData();
+				}else{
+					window.alert("Não foi possivel Alterar a tarefa");
+				}
+			})
+		}
 	});
 })();
