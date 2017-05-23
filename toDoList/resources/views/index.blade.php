@@ -31,13 +31,6 @@
     <!--  -->
     <hr>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-1"><b>X</b></div>
-            <div class="col-sm-3"><b>Texto</b></div>
-            <div class="col-sm-3"><b>Autor</b></div>
-            <div class="col-sm-3"><b>Status</b></div>
-            <div class="col-sm-2"><b>Alterar</b></div>
-        </div>
         <div class="row" ng-repeat="tarefa in dadostarefas" ng-class-odd="'odd'" ng-class-even="'even'">
             <div class="col-sm-1"><span ng-click="excluirTarefa(tarefa.id)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
             <div class="col-sm-3">@{{tarefa.texto}}</div>
