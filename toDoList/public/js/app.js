@@ -7,10 +7,11 @@
 // })();
 
 (function(){
+	var token = "123456";
 	var app = angular.module('tarefas',[]);
 	app.controller('TarefasController', function($scope, $http){
 		$scope.loadData = function(){
-			$http.get('api/tarefas').success(function(data){
+			$http.get('api/tarefas?api_token='+token).success(function(data){
 				$scope.dadostarefas = data;
 			});
 		}
@@ -21,7 +22,7 @@
 				'autor': $scope.autor,
 				'status': $scope.status
 			}
-			var requisicao = $http({method:"post", url:"api/tarefas", data:dadosPost}).success( function (data, status){
+			var requisicao = $http({method:"post", url:"api/tarefas?api_token="+token, data:dadosPost}).success( function (data, status){
 					if(data && status == 201){
 						$scope.loadData(function (){ $scope.texto = ''; $scope.autor = '';$scope.status = '';
 						});
@@ -33,7 +34,7 @@
 		}
 		$scope.mudarStatus = function(id, status) {
 			dadosPost = {'status': status};
-			var requisicao = $http({method:"put", url:"api/tarefas/"+id, data:dadosPost}).success(function (data, status) {
+			var requisicao = $http({method:"put", url:"api/tarefas/"+id+"?api_token="+token, data:dadosPost}).success(function (data, status) {
 				if(data.id == id && status == 201){
 					$scope.loadData();
 				}else{
@@ -43,7 +44,7 @@
 		}
 		$scope.excluirTarefa = function(id){
 			if(confirm("Confirma Exclusão da tarefa?")){
-				var requisicao = $http({method:"delete", url:"api/tarefas/"+id}).success(function (data, status) {
+				var requisicao = $http({method:"delete", url:"api/tarefas/"+id+"?api_token="+token}).success(function (data, status) {
 					if (data == 1 && status == 200) {
 						$scope.loadData();
 					}else {
