@@ -18,10 +18,10 @@ class ContatoController extends Controller
     		'assunto' => $request->input('assunto'),
     		'mensagem' => $request->input('mensagem'),
     	);
-    	Mail::send('mensagem', $data, function ($message) {
-    	    $message->from('bulfaitelo@gmail.com', 'bulfaitelo');    	
+    	Mail::send('mail', $data, function ($message) {
+    	    $message->from('bpostmaster@sandbox52ef429eb4d94391a6cd6e2d8a96e18b.mailgun.org', 'bulfaitelo');    	
     	    $message->subject('Mensagem encaminhada e gz');
-    	    $message->to('thiagorodriguesmelo@hotmail.com', 'Thiago');    	
+    	    $message->to('bulfaitelo@gmail.com', 'Thiago');    	
     	});
     	return redirect ('contato');
     }
