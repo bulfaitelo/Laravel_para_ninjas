@@ -87,4 +87,57 @@ class ProdutosController extends Controller
             return view('produtos.index', array('produtos'=>$produtos, 'busca'=>$request->input('busca')));
     }
 
+    public function extras(Request $request){
+        // exemplo 1
+        // $produtos = Produto::orderBy('id', 'DESC')->get();
+        // foreach ($produtos as $produto) {
+        //     echo "<h2>" . $produto->id . " - " . $produto->titulo . "</h2>";
+        // }
+
+        // exempo 2
+        // $menor_preco = Produto::all()->min('preco');
+        // $media_preco = Produto::all()->avg('preco');
+        // $maior_preco = Produto::all()->max('preco');
+        // $contar = Produto::all()->count();
+        // $soma = Produto::all()->sum('preco');
+        // echo "Produto mais barato: R$".number_format($menor_preco,2,",",".")."<br>";
+        // echo "Media depreço: R$".number_format($media_preco,2,",",".")."<br>";
+        // echo "Produto mais caro: R$".number_format($maior_preco,2,",",".")."<br>";
+        // echo "Para " . $contar . " PRodutos <br>";
+        // echo "Soma dos preços: R$".number_format($soma,2,",",".")."<br>";
+
+        // Exemplo 3
+        // $contar = Produto::where('preco', '>', 50)->count();
+        // echo $contar . " Produtos mais caros que 50";
+
+        // exemplo 4
+        // $produtos = Produto::where('titulo', 'like', '%vido%');
+
+        // exemplo 5
+        // try {
+        //     $produtos = Produto::where(function($buscar) use ($request) {
+        //         $buscar->orwhere('titulo', 'like', '%qwe%');
+        //         $buscar->orwhere('titulo', 'like', '%verde%');
+        //         $buscar->where('preco', '>', 50);
+        //     })->get();
+        //     dd($produtos);
+        // } catch (Exception $e) {
+        //     dd($e);
+        // }
+
+        // Exemplo 6
+        try {
+            $produto = Produto::where(function($buscar) use ($request){
+                $buscar->orwhere('titulo', 'like', '%qwe%');
+                $buscar->orwhere('titulo', 'like', '%vidro%');
+                $buscar->where('preco', '>', 50);
+
+            })->firstOrFail();
+            echo "<h2>" . $produto->titulo . " - R$" . number_format($produto->preco,2,",",".") . "</h2>";
+        } catch (Exception $e) {
+            dd($e);
+        }
+
+    }
+
 }
